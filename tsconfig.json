@@ -2,6 +2,8 @@
   "compilerOptions": {
     "types": ["vite/client"],
     "esModuleInterop": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "allowImportingTsExtensions": true,
+    "noEmit": true
   }
 } 
