@@ -153,8 +153,15 @@ const DashboardPage: React.FC = () => {
   };
 
   const handleStravaConnect = () => {
-    const stravaAuthorizeUrl = `https://www.strava.com/oauth/authorize?client_id=${import.meta.env.VITE_STRAVA_CLIENT_ID}&response_type=code&redirect_uri=${window.location.origin}/strava/callback&approval_prompt=force&scope=read,activity:read_all`;
-    window.location.href = stravaAuthorizeUrl;
+    const stravaAuthorizeUrl = "https://www.strava.com/oauth/authorize";
+    const params = new URLSearchParams({
+      client_id: import.meta.env.VITE_STRAVA_CLIENT_ID,
+      redirect_uri: "https://uhlomnsxbmqhjzkokpwr.functions.supabase.co/strava-callback",
+      response_type: "code",
+      scope: "read,activity:read_all",
+    });
+
+    window.location.href = `${stravaAuthorizeUrl}?${params.toString()}`;
   };
 
   return (
