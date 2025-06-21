@@ -1,6 +1,10 @@
 {
   "rewrites": [
     {
+      "source": "/strava/callback",
+      "destination": "https://uhlomnsxbmqhjzkokpwr.supabase.co/functions/v1/strava-callback"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
