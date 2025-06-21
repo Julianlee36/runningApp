@@ -153,12 +153,18 @@ const DashboardPage: React.FC = () => {
   };
 
   const handleStravaConnect = () => {
+    if (!user) {
+      console.error("User not found, cannot connect to Strava.");
+      return;
+    }
+
     const stravaAuthorizeUrl = "https://www.strava.com/oauth/authorize";
     const params = new URLSearchParams({
       client_id: import.meta.env.VITE_STRAVA_CLIENT_ID,
       redirect_uri: "https://uhlomnsxbmqhjzkokpwr.functions.supabase.co/strava-callback",
       response_type: "code",
       scope: "read,activity:read_all",
+      state: user.id,
     });
 
     window.location.href = `${stravaAuthorizeUrl}?${params.toString()}`;
